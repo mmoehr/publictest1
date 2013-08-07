@@ -1,8 +1,11 @@
 <?php
 
 class DB {
+       
     
     private $_link = null; // db link resource
+    
+    private $_neueVar = null;
     
     private $_result = null; // current result
     
@@ -14,13 +17,13 @@ class DB {
     public function query($query) {        
         $this->_result = mysql_query($query);
         
-        if(false === $this->_result) {
+        if(false == $this->_result) {
             $this->_handleError();
         }
     }
                 
     private function _handleError() {
-        die('<p><b>SQL-Error</b> '.mysql_error($this->_link).'</p>');
+        die('<p><b>FEHLER</b> '.mysql_error($this->_link).'</p>');
     }
     
     public function numRows() {
